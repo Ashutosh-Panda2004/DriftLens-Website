@@ -85,7 +85,10 @@ const PRIVACY = [
 ]
 
 const STEPS = [
-  { num: '01', title: 'Install globally',          desc: 'Adds the driftlens command to your PATH.', code: '$ npm install -g driftlens', copy: 'npm install -g driftlens' },
+  { num: '01', title: 'Install globally',
+    desc: 'Installs the driftlens command globally. npm registry publish is in progress — install directly from GitHub in the meantime.',
+    code: `$ npm install -g github:Ashutosh-Panda2004/DriftLens\n\n# npm registry publish coming soon — then this will become:\n# npm install -g driftlens`,
+    copy: 'npm install -g github:Ashutosh-Panda2004/DriftLens' },
   { num: '02', title: 'Initialize in your project', desc: 'Run in the root of any git repository. Safe on existing repos — chains with any existing hook.', code: INIT, copy: 'driftlens init' },
   { num: '03', title: 'Configure LLM provider',    desc: 'Edit .driftlens/config.json. Only needed for driftlens analyse and driftlens propose. Correction capture is offline.', code: CONFIG, label: '.driftlens/config.json' },
   { num: '04', title: 'Code with your AI tool',    desc: 'Option A: use driftlens watch to bracket sessions explicitly. Option B: just commit — the hook reads session logs automatically, or tag retroactively.', code: WATCH, extra: MARK },

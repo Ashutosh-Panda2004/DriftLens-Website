@@ -4,19 +4,24 @@ import { Link } from 'react-router-dom'
 /* ── Install snippet ── */
 function InstallBox() {
   const [copied, setCopied] = useState(false)
-  const CMD = 'npm install -g driftlens'
+  const CMD = 'npm install -g github:Ashutosh-Panda2004/DriftLens'
   const copy = () => {
     navigator.clipboard.writeText(CMD).catch(() => {})
     setCopied(true)
     setTimeout(() => setCopied(false), 1500)
   }
   return (
-    <div className="install-box">
-      <span className="install-dollar">$</span>
-      <span className="install-cmd">{CMD}</span>
-      <button className={`install-copy${copied ? ' copied' : ''}`} onClick={copy}>
-        {copied ? 'copied ✓' : 'copy'}
-      </button>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.625rem' }}>
+      <div className="install-box">
+        <span className="install-dollar">$</span>
+        <span className="install-cmd">{CMD}</span>
+        <button className={`install-copy${copied ? ' copied' : ''}`} onClick={copy}>
+          {copied ? 'copied ✓' : 'copy'}
+        </button>
+      </div>
+      <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+        npm registry publish coming soon &mdash; install directly from GitHub in the meantime
+      </p>
     </div>
   )
 }
@@ -92,7 +97,7 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <div className="hero-badge">
-            <span className="badge">Open source · MIT · npm install -g driftlens</span>
+            <span className="badge">Open source · MIT · npm publish coming soon</span>
           </div>
           <h1>Every fix you make to AI code is a lesson it never learns.</h1>
           <p className="hero-sub">
