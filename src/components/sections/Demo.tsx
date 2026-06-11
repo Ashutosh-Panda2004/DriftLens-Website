@@ -119,6 +119,7 @@ export default function Demo() {
         />
         <AnimIn>
           <div className="demo-layout">
+            {/* Sidebar tabs — desktop only */}
             <div className="demo-tabs">
               {DEMO_STEPS.map((s, i) => (
                 <button
@@ -138,36 +139,33 @@ export default function Demo() {
                 <div className="demo__dot demo__dot--red" />
                 <div className="demo__dot demo__dot--yellow" />
                 <div className="demo__dot demo__dot--green" />
-                <span className="demo__title">
-                  zsh — my-project &nbsp;|&nbsp;
-                  <span style={{ color: TAG_COLORS[current.tag] }}>{current.tag}</span>
-                  &nbsp;— {current.subtitle}
-                </span>
+                <span className="demo__title">{current.title}</span>
                 <div className="demo-controls-inline">
-                  <button className="btn btn--ghost" style={{ padding: '0.2rem 0.625rem', fontSize: '0.75rem' }} onClick={() => setKey(k => k + 1)}>
-                    Replay
-                  </button>
+                  <button className="demo-ctrl-btn" onClick={() => setKey(k => k + 1)}>↺</button>
                   <button
-                    className={`btn btn--ghost ${isPlaying ? 'demo-playing' : ''}`}
-                    style={{ padding: '0.2rem 0.625rem', fontSize: '0.75rem' }}
+                    className={`demo-ctrl-btn ${isPlaying ? 'demo-ctrl-btn--active' : ''}`}
                     onClick={() => setIsPlaying(p => !p)}
                   >
-                    {isPlaying ? 'Pause' : 'Play All'}
+                    {isPlaying ? '⏸' : '▶'}
                   </button>
                 </div>
               </div>
 
-              <div key={key} style={{ height: '420px', overflow: 'hidden' }}>
+              <div key={key} style={{ height: '500px', overflow: 'hidden' }}>
                 <TypewriterTerminal step={current} termKey={key} />
               </div>
 
-              <div className="demo__progress">
-                {DEMO_STEPS.map((_, i) => (
-                  <div
+              {/* Mobile step pills — shown only on mobile */}
+              <div className="demo__mobile-steps">
+                {DEMO_STEPS.map((s, i) => (
+                  <button
                     key={i}
-                    className={`demo__prog-bar ${i <= step ? 'demo__prog-bar--done' : ''} ${i === step ? 'demo__prog-bar--active' : ''}`}
+                    className={`demo__mobile-pill ${i === step ? 'demo__mobile-pill--active' : ''}`}
                     onClick={() => goTo(i)}
-                  />
+                    style={{ color: i === step ? TAG_COLORS[s.tag] : undefined }}
+                  >
+                    {s.tag}
+                  </button>
                 ))}
               </div>
             </div>
