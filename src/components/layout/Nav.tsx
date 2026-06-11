@@ -37,37 +37,40 @@ export default function Nav() {
     <>
       <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
         <div className="nav__inner">
-          <a href="#" className="nav__logo" onClick={close}>
-            <span className="nav__logo-drift">Drift</span>
-            <span className="nav__logo-lens">Lens</span>
-          </a>
+          <div className="nav__left">
+            <a href="#" className="nav__logo" onClick={close}>
+              <span className="nav__logo-drift">Drift</span>
+              <span className="nav__logo-lens">Lens</span>
+            </a>
+            {/* Desktop links */}
+            <ul className="nav__links">
+              {NAV_LINKS.map(([href, label]) => (
+                <li key={href}><a href={href}>{label}</a></li>
+              ))}
+            </ul>
+          </div>
 
-          {/* Desktop links */}
-          <ul className="nav__links">
-            {NAV_LINKS.map(([href, label]) => (
-              <li key={href}><a href={href}>{label}</a></li>
-            ))}
-          </ul>
+          <div className="nav__right">
+            {/* Desktop GitHub CTA */}
+            <a
+              href="https://github.com/Ashutosh-Panda2004/DriftLens"
+              target="_blank"
+              rel="noreferrer"
+              className="nav__github nav__github--desktop"
+            >
+              <GitHubIcon />
+              GitHub
+            </a>
 
-          {/* Desktop GitHub CTA */}
-          <a
-            href="https://github.com/Ashutosh-Panda2004/DriftLens"
-            target="_blank"
-            rel="noreferrer"
-            className="nav__github nav__github--desktop"
-          >
-            <GitHubIcon />
-            GitHub
-          </a>
-
-          {/* Mobile hamburger */}
-          <button
-            className={`nav__hamburger ${menuOpen ? 'nav__hamburger--open' : ''}`}
-            onClick={() => setMenuOpen(o => !o)}
-            aria-label="Toggle menu"
-          >
-            <span /><span /><span />
-          </button>
+            {/* Mobile hamburger */}
+            <button
+              className={`nav__hamburger ${menuOpen ? 'nav__hamburger--open' : ''}`}
+              onClick={() => setMenuOpen(o => !o)}
+              aria-label="Toggle menu"
+            >
+              <span /><span /><span />
+            </button>
+          </div>
         </div>
       </nav>
 
