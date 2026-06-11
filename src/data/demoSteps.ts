@@ -18,7 +18,7 @@ export const DEMO_STEPS: DemoStep[] = [
     subtitle: 'Install and initialize in 30 seconds',
     tag: 'SETUP',
     lines: [
-      { type: 'cmd',     text: 'npm install -g driftlens' },
+      { type: 'cmd',     text: 'npm install -g github:Ashutosh-Panda2004/DriftLens' },
       { type: 'success', text: '[ok] installed driftlens@0.2.0' },
       { type: 'blank',   text: '' },
       { type: 'cmd',     text: 'cd my-project && driftlens init' },
