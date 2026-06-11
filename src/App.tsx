@@ -1,34 +1,29 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import Nav from './components/Nav'
-import Footer from './components/Footer'
-import Home from './pages/Home'
-import HowItWorks from './pages/HowItWorks'
-import Setup from './pages/Setup'
-import Commands from './pages/Commands'
-import Compatibility from './pages/Compatibility'
-import About from './pages/About'
-
-function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
-  return null
-}
+﻿import Nav from './components/layout/Nav'
+import Footer from './components/layout/Footer'
+import Hero from './components/sections/Hero'
+import Features from './components/sections/Features'
+import SignalPipeline from './components/sections/SignalPipeline'
+import Demo from './components/sections/Demo'
+import ROIShowcase from './components/sections/ROIShowcase'
+import HowItWorks from './components/sections/HowItWorks'
+import Comparison from './components/sections/Comparison'
+import AgentSupport from './components/sections/AgentSupport'
+import CTA from './components/sections/CTA'
 
 export default function App() {
   return (
     <>
-      <ScrollToTop />
       <Nav />
-      <main className="main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/setup" element={<Setup />} />
-          <Route path="/commands" element={<Commands />} />
-          <Route path="/compatibility" element={<Compatibility />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+      <main>
+        <Hero />
+        <Features />
+        <SignalPipeline />
+        <Demo />
+        <ROIShowcase />
+        <HowItWorks />
+        <Comparison />
+        <AgentSupport />
+        <CTA />
       </main>
       <Footer />
     </>
