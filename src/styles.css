@@ -1027,22 +1027,6 @@ code, .mono {
 .term-head { color: #e2e8f0; font-weight: 600; }
 .term-blank { color: transparent; }
 
-/* Progress bar */
-.demo__progress {
-  display: flex;
-  height: 3px;
-  gap: 2px;
-  padding: 0;
-}
-.demo__prog-bar {
-  flex: 1;
-  background: var(--surface-3);
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.demo__prog-bar--done { background: var(--accent-dim); }
-.demo__prog-bar--active { background: var(--accent); }
-
 /* feature-card--accent color */
 .feature-card__icon--accent { background: var(--accent-dim); color: var(--accent-bright); }
 
@@ -1350,10 +1334,38 @@ code, .mono {
   /* Signal grid: 1 col */
   .signal-grid { grid-template-columns: 1fr; }
 
-  /* Demo layout: tabs on top */
+  /* Demo layout: tabs on top with button styling */
   .demo-layout { grid-template-columns: 1fr; gap: 1rem; }
   .demo-tabs { flex-direction: row; overflow-x: auto; gap: 0.5rem; padding-bottom: 0.25rem; }
-  .demo-tab { flex-direction: row; align-items: center; gap: 0.75rem; min-width: 160px; padding: 0.75rem 1rem; }
+  .demo-tab {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 160px;
+    padding: 0.875rem 1rem;
+    border: 1.5px solid var(--border);
+    background: var(--surface-3);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .demo-tab:hover {
+    background: var(--surface-2);
+    border-color: var(--border-mid);
+    box-shadow: 0 4px 12px rgba(99,102,241,0.12);
+    transform: translateY(-1px);
+  }
+  .demo-tab--active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #0f172a;
+    box-shadow: 0 6px 16px rgba(99,102,241,0.25);
+    transform: translateY(-1px);
+  }
+  .demo-tab--active .demo-tab__title,
+  .demo-tab--active .demo-tab__tag {
+    color: #0f172a;
+  }
   .demo-tab__sub { display: none; }
   .demo-tab__title { font-size: 0.75rem; }
   .demo-tab__tag { font-size: 0.6rem; }
@@ -1480,3 +1492,207 @@ code, .mono {
   .comparison, .matrix { -webkit-overflow-scrolling: touch; }
   .comparison table, .matrix table { min-width: 480px; }
 }
+
+/* ================================================================
+   NAV: left group (logo + links) + right group (github + hamburger)
+   ================================================================ */
+.nav__inner { justify-content: space-between; }
+.nav__left {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+@media (max-width: 1024px) {
+  .nav__links { display: none !important; }
+  .nav__github--desktop { display: none !important; }
+}
+
+/* ================================================================
+   METRICS: always 4 columns, no orphan
+   ================================================================ */
+.metrics--4col {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+@media (max-width: 768px) {
+  .metrics--4col { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 400px) {
+  .metrics--4col { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ================================================================
+   HERO: install command - wrap naturally on all devices
+   ================================================================ */
+.hero__install-cmd {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+}
+@media (max-width: 640px) { .hero__install-cmd { max-width: 100%; } }
+@media (max-width: 400px) { .hero__install-cmd { max-width: 100%; } }
+
+/* ================================================================
+   COMPARISON: featured rows are bold label only, same bg
+   ================================================================ */
+.comparison .highlight { background: transparent !important; }
+.comparison__featured-label {
+  font-weight: 700;
+  color: var(--text-bright) !important;
+}
+.comparison__featured-row td:first-child { font-weight: 700; color: var(--text-bright); }
+
+/* ================================================================
+   DEMO: visible control buttons
+   ================================================================ */
+.demo-ctrl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-xs);
+  background: var(--surface-3);
+  border: 1px solid var(--border-mid);
+  color: var(--text-mid);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.demo-ctrl-btn:hover { background: var(--surface-hover); color: var(--text-bright); border-color: var(--border-strong); }
+.demo-ctrl-btn--active { color: var(--amber); border-color: var(--amber); background: rgba(245,158,11,0.1); }
+
+/* Mobile step pills (hidden on desktop) */
+.demo__mobile-steps {
+  display: none;
+  gap: 0.375rem;
+  padding: 0.875rem 1.25rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+}
+.demo__mobile-pill {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 99px;
+  border: 1px solid var(--border-mid);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.demo__mobile-pill--active {
+  border-color: currentColor;
+  background: rgba(255,255,255,0.04);
+}
+@media (max-width: 1024px) {
+  .demo-layout { grid-template-columns: 1fr !important; }
+  .demo-tabs { display: none !important; }
+  .demo__mobile-steps { display: flex !important; }
+}
+
+/* ================================================================
+   FEATURE CARDS WITH CODE SNIPPETS
+   ================================================================ */
+.feat-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 900px)  { .feat-cards { grid-template-columns: 1fr; } }
+
+.feat-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  min-height: 420px;
+}
+.feat-card:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 0 40px rgba(99,102,241,0.06);
+}
+.feat-card__top {
+  padding: 1.5rem 1.5rem 1.25rem;
+}
+.feat-card__tag {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.625rem;
+}
+.feat-card__headline {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.625rem;
+}
+.feat-card__why {
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.feat-card__snippets {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  flex: 1;
+}
+.feat-snippet {
+  padding: 0.875rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.feat-snippet:last-child { border-bottom: none; }
+.feat-snippet--bad { background: rgba(239,68,68,0.03); }
+.feat-snippet--good { background: rgba(16,185,129,0.03); }
+.feat-snippet__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.375rem;
+}
+.feat-snippet--bad  .feat-snippet__label { color: var(--red); }
+.feat-snippet--good .feat-snippet__label { color: var(--green); }
+.feat-snippet__code {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text-mid);
+  white-space: pre;
+  overflow-x: auto;
+  margin: 0;
+}
+.feat-snippet--bad  .feat-snippet__code { color: #fca5a5; }
+.feat-snippet--good .feat-snippet__code { color: #6ee7b7; }
+.feat-card__outcome {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--surface-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  border-top: 1px solid var(--border);
+}
+.feat-card__outcome-arrow { color: var(--accent-light); font-weight: 700; flex-shrink: 0; }
