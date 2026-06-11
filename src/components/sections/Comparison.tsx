@@ -38,8 +38,8 @@ export default function Comparison() {
                 {ROWS.map((row, i) => {
                   const [cap, ...vals] = row
                   return (
-                    <tr key={i} className={i < 4 ? 'highlight' : ''}>
-                      <td>{cap}</td>
+                    <tr key={i} className={i < 4 ? 'comparison__featured-row' : ''}>
+                      <td className={i < 4 ? 'comparison__featured-label' : ''}>{cap}</td>
                       {vals.map((v, j) => (
                         <td key={j} className={v ? 'check' : 'cross'}>{v ? 'Yes' : '—'}</td>
                       ))}
