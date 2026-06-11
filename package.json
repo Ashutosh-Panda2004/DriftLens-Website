@@ -1,6 +1,15 @@
 {
   "name": "driftlens-website",
   "version": "2.0.0",
+  "description": "DriftLens - The observability platform for AI-assisted development. Proves ROI in dollars, predicts failures, and routes to the best agent.",
+  "author": "Ashutosh Panda",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ashutosh-Panda2004/DriftLens"
+  },
+  "homepage": "https://driftlens.dev",
+  "keywords": ["AI", "development", "observability", "ROI", "coding-assistant", "productivity"],
   "private": true,
   "type": "module",
   "scripts": {
