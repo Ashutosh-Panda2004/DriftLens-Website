@@ -28,20 +28,53 @@ const CARDS: FeatureCard[] = [
     tag: 'PREVENT',
     tagColor: '#a78bfa',
     headline: 'Stop the mistake before it happens.',
-    why: 'DriftLens runs an MCP server that injects file-specific rules into the AI context before any code is generated. The correction loop never starts.',
+    why: 'DriftLens runs an MCP server that injects a ranked, token-bounded set of file-specific rules into the AI context before any code is generated — and logs every injection to prove prevention works. The correction loop never starts.',
     snippet: [
-      { label: 'Opening AuthService.ts — DriftLens injects', code: '> Constraint: use authService singleton\n> Constraint: import from @/services, not ../\n> Constraint: never use new AuthService()', isGood: true },
+      { label: 'Opening AuthService.ts — DriftLens injects top constraints', code: '1. [92%] use authService singleton\n2. [88%] import from @/services, not ../\n3. [81%] never use new AuthService()', isGood: true },
       { label: 'AI output (no correction needed)', code: 'import { authService } from \'@/services\'\nauthService.login(credentials)', isGood: true },
     ],
     outcome: '11 corrections avoided last month.',
   },
   {
+    tag: 'PRIORITISE',
+    tagColor: 'var(--accent-light)',
+    headline: 'Which mistake should you fix first?',
+    why: 'Every correction is auto-classified by reason — security, correctness, performance, architecture, and more — then patterns are ranked by an impact score blending frequency, recency, and severity. A weekly security miss outranks a stylistic nit seen twice.',
+    snippet: [
+      { label: 'driftlens analyse', code: '[impact 91% · security]   unsanitised-sql-input  — 14x\n[impact 64% · architecture] fetch-in-component   — 9x\n[impact 28% · style]      import-ordering        — 3x', isGood: true },
+    ],
+    outcome: 'Fix what actually matters, in order.',
+  },
+  {
+    tag: 'DIAGNOSE',
+    tagColor: 'var(--cyan)',
+    headline: 'Twelve symptoms, one root cause.',
+    why: 'Meta-pattern detection groups distinct patterns into systemic themes, while contradiction detection flags when two developers correct the AI in opposite directions — before DriftLens ever proposes two rules that fight each other.',
+    snippet: [
+      { label: 'driftlens analyse — meta-pattern', code: 'THEME: data-access-layer (security)\n  → 4 patterns · 31 corrections\n  Root cause: AI does not know the repository layer', isGood: true },
+      { label: 'driftlens unify --conflicts', code: '[!] src/api.ts: dev A says \'always async\',\n    dev B says \'keep it sync\' — align first', isGood: false },
+    ],
+    outcome: 'Address causes, not symptoms.',
+  },
+  {
+    tag: 'SHARE',
+    tagColor: 'var(--green-bright)',
+    headline: 'Teach the whole org at once.',
+    why: 'Export a high-performing repo\'s proven rules and import them anywhere — knowledge propagates across teams. Then synthesise the rules into Semgrep checks and test stubs so CI enforces them forever.',
+    snippet: [
+      { label: 'driftlens registry export --scope org', code: '[ok] Exported 23 proven rules to registry.json', isGood: true },
+      { label: 'driftlens synth-test --out guards/', code: '[ok] Wrote 9 guards (semgrep + test stubs)\n    Regressions now caught by CI, not humans', isGood: true },
+    ],
+    outcome: 'Hard-won lessons, shared and enforced.',
+  },
+  {
     tag: 'MEASURE',
     tagColor: 'var(--green-bright)',
     headline: 'Is this actually saving time?',
-    why: 'DriftLens tracks every correction — time to commit, which agent, which model version. It calculates real dollar ROI so you have a number to show leadership.',
+    why: 'DriftLens tracks every correction — time to commit, which agent, which model version — and a causal rule ledger proves whether each merged rule truly reduced its corrections. Real dollar ROI you can show leadership.',
     snippet: [
       { label: 'driftlens roi', code: 'Time saved:    +47.3 hrs\nTime on fixes: -12.1 hrs\nNet value:     $4,020\nTool spend:    $769\n─────────────────────\nNET ROI:       $2,992  (3.9x)', isGood: true },
+      { label: 'driftlens rules', code: 'high-value:  service-layer  — saves $210/mo\ndead-weight: legacy-jquery   — prune it', isGood: true },
     ],
     outcome: 'A real number, not a feeling.',
   },
@@ -64,8 +97,8 @@ export default function Features() {
       <div className="container">
         <SectionHeader
           eyebrow="What DriftLens Does"
-          title={<>Four problems. One tool.</>}
-          sub="Every situation below is something developers using AI coding tools face every single day. DriftLens handles all of them automatically."
+          title={<>Capture. Analyse. Prevent. Prove.</>}
+          sub="Every situation below is something developers using AI coding tools face every single day. DriftLens handles all of them automatically — from classifying why the AI failed to injecting the fix before it happens."
         />
 
         <div className="feat-cards">
