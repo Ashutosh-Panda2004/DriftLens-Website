@@ -8,14 +8,14 @@ export default function SignalPipeline() {
         <SectionHeader
           eyebrow="How It Works"
           title={<>Every correction you make<br />gets captured automatically.</>}
-          sub="You already correct AI mistakes every day. You just don't get anything back for it. DriftLens watches your git commits and your chat sessions — silently — and turns those corrections into rules."
+          sub="You already correct AI mistakes every day. DriftLens captures them three ways, silently, and turns them into rules."
         />
 
         <div className="signal-grid">
           <AnimIn delay={0}>
             <div className="signal-card">
-              <div className="signal-card__label signal-card__label--a">PATH A — Git Delta</div>
-              <p className="signal-card__desc">You edit AI code before committing. The post-commit hook records exactly what the AI wrote vs. what you kept.</p>
+              <div className="signal-card__label signal-card__label--a">PATH A: Git Delta</div>
+              <p className="signal-card__desc">You edit AI code before committing. The git hook records what the AI wrote vs. what you kept.</p>
               <div className="diff-block">
                 <div className="diff-line diff-line--meta">// AI wrote:</div>
                 <div className="diff-line diff-line--del">- const data = await fetch('/api/users')</div>
@@ -28,8 +28,8 @@ export default function SignalPipeline() {
 
           <AnimIn delay={0.1}>
             <div className="signal-card">
-              <div className="signal-card__label signal-card__label--b">PATH B — Re-prompt</div>
-              <p className="signal-card__desc">You type a correction into Claude, Cursor, or Copilot chat. DriftLens reads that instruction directly from your session log.</p>
+              <div className="signal-card__label signal-card__label--b">PATH B: Re-prompt</div>
+              <p className="signal-card__desc">You correct the AI in chat. DriftLens reads that instruction straight from your session log.</p>
               <div className="diff-block">
                 <div className="diff-line diff-line--dim">You (in Claude Code):</div>
                 <div className="diff-line diff-line--instruction">"No, don't use fetch() directly.</div>
@@ -42,8 +42,8 @@ export default function SignalPipeline() {
 
           <AnimIn delay={0.2}>
             <div className="signal-card">
-              <div className="signal-card__label signal-card__label--c">PATH C — Struggle Chain</div>
-              <p className="signal-card__desc">It takes 3-6+ turns to get the AI to do it right. DriftLens captures the full conversation and extracts every rule you stated.</p>
+              <div className="signal-card__label signal-card__label--c">PATH C: Struggle Chain</div>
+              <p className="signal-card__desc">It takes several turns to get it right. DriftLens captures the full chain and extracts every rule you stated.</p>
               <div className="diff-block" style={{ fontSize: '0.75rem' }}>
                 <div className="diff-line diff-line--dim">[T1] AI:  <span style={{ color: 'var(--red)' }}>await fetch('/api/users')</span></div>
                 <div className="diff-line diff-line--instruction">[T1] You: "Use the service layer"</div>

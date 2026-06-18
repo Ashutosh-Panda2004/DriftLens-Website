@@ -115,7 +115,7 @@ export default function Demo() {
         <SectionHeader
           eyebrow="Live Demo"
           title="The complete DriftLens workflow."
-          sub="From install to skill file PR — watch every command execute in real-time, exactly as you would see it in your terminal."
+          sub="From install to skill-file PR, watch every command run in real time, exactly as you'd see it in your terminal."
         />
         <AnimIn>
           <div className="demo-layout">
