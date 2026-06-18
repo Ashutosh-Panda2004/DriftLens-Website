@@ -6,7 +6,7 @@ export default function CTA() {
       <div className="container">
         <AnimIn>
           <h2>Your corrections deserve to be permanent.</h2>
-          <p>30-second install. No account. No infrastructure. Works with the tools you already use.</p>
+          <p>30-second install. No account. Works with the tools you already use.</p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '0.5rem' }}>
             <a href="https://github.com/Ashutosh-Panda2004/DriftLens" target="_blank" rel="noreferrer" className="btn btn--primary btn--large">
               Get Started Free

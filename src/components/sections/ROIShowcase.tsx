@@ -8,7 +8,7 @@ export default function ROIShowcase() {
         <SectionHeader
           eyebrow="ROI"
           title={<>Does your AI tool actually<br />save you time?</>}
-          sub="DriftLens gives you a real answer — time saved vs time spent fixing mistakes, converted to dollars. Finally a number you can show leadership."
+          sub="Time saved minus time spent fixing mistakes, converted to dollars — a number you can show leadership."
         />
         <div className="roi-grid-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '1.5rem' }}>
           <AnimIn>

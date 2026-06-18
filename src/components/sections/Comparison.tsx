@@ -7,16 +7,9 @@ const ROWS: [string, boolean, boolean, boolean, boolean][] = [
   ['Dollar ROI measurement',             true,  false, false, false],
   ['Predictive failure prevention',      true,  false, false, false],
   ['Reason taxonomy + impact ranking',   true,  false, false, false],
-  ['Meta-pattern + contradiction detect',true,  false, false, false],
-  ['Conflict-aware, never-nag proposals',true,  false, false, false],
-  ['Org-wide rule registry',             true,  false, false, false],
-  ['Correction-to-test synthesis (CI)',  true,  false, false, false],
-  ['Causal rule effectiveness ledger',   true,  false, false, false],
   ['Cross-agent quality comparison',     true,  false, false, false],
   ['Model regression detection',         true,  false, false, false],
-  ['Per-rule token ROI',                 true,  false, false, false],
-  ['Works with 7+ agents',               true,  false, false, false],
-  ['Executive ROI reporting',            true,  false, false, false],
+  ['Org-wide rule registry',             true,  false, false, false],
 ] as const
 
 export default function Comparison() {
@@ -26,7 +19,7 @@ export default function Comparison() {
         <SectionHeader
           eyebrow="How It Compares"
           title="Nothing else does all of this."
-          sub="Other tools do one thing — train a skill, show a metric, or remember a fact. DriftLens closes the whole loop, from the first correction to the proven result."
+          sub="Other tools do one thing. DriftLens closes the whole loop — from the first correction to the proven result."
         />
         <AnimIn>
           <div className="comparison">

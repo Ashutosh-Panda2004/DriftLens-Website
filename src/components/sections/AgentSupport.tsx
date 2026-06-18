@@ -18,7 +18,7 @@ export default function AgentSupport() {
         <SectionHeader
           eyebrow="Works With"
           title="Whatever AI tool you use today."
-          sub="Install once and DriftLens works across all of them — reading corrections, updating their rule files, and injecting context before each generation."
+          sub="Install once. DriftLens reads corrections, updates rule files, and injects context for every agent you use."
         />
         <AnimIn>
           <div className="matrix">
