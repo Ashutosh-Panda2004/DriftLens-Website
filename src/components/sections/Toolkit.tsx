@@ -90,8 +90,10 @@ export default function Toolkit() {
           title="Every command at your fingertips"
           sub="DriftLens provides 20+ commands organized into seven categories. Each one unlocks a specific insight or action."
         />
+      </div>
 
-        <div className="toolkit-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '0 var(--pad)' }}>
+        <div className="toolkit-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', maxWidth: '1200px', width: '100%' }}>
           {COMMAND_GROUPS.map((group, i) => (
             <AnimIn key={i} delay={i * 0.06}>
               <div style={{
