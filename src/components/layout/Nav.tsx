@@ -4,6 +4,7 @@ const NAV_LINKS: [string, string][] = [
   ['#features', 'Features'],
   ['#signals', 'How It Works'],
   ['#demo', 'Demo'],
+  ['#setup', 'Setup'],
   ['#roi', 'ROI'],
   ['#comparison', 'Compare'],
 ]
