@@ -21,7 +21,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p className="hero__sub" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}>
-          Every AI correction your team makes disappears at session end. DriftLens captures them, finds the patterns, updates your skill files automatically, and tells you the dollar value of all of it.
+          Every AI correction you make disappears at session end. DriftLens captures them, classifies why they happened, ranks what matters most, updates your skill files automatically, prevents repeats before code is written — and tells you the dollar value of all of it.
         </motion.p>
 
         <motion.div className="hero__actions" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65, duration: 0.5 }}>
